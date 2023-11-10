@@ -4,7 +4,7 @@
 
 *You will find all the steps to get access to the Unity Project.*
 
-*This process is based on the YouTube video bellow :*
+*This process is based on this YouTube video :*
 [How to Use GitHub to Collaborate in Unity in ONLY 10 MINUTES](https://youtu.be/pNUdu-6ZNBg?si=P6tqzzrNXuBeloXM)
 
 1. [Install Unity Hub](https://unity.com/download)
