@@ -1,6 +1,4 @@
-# OC-unity-project
-
-## How to get access to the Unity Project in collaboration with others
+# How to get access to the Unity Project in collaboration with others
 
 *You will find all the steps to get access to the Unity Project.*
 
