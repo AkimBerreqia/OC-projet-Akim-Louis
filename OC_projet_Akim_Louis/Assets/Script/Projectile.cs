@@ -7,10 +7,11 @@ public class Projectile : MonoBehaviour
 {
 
     public Power power;
+    public Mana mana;
     public GameObject CurrentProjectile;
 
     public int shotingDirection;
-    private float timeShot;
+    public float timeShot;
     public float projectileCoolDown = 2f;
     public bool coolDown = false;
     public bool onShot = false;
@@ -18,11 +19,12 @@ public class Projectile : MonoBehaviour
     private string shotRight = "k";
     public Color chosenColor;
 
-    void instantiateProjectile()
+    void InstantiateProjectile()
     {
         if (Time.time - timeShot >= projectileCoolDown)
         {
             coolDown = false;
+            mana.canRecover = true;
         }
 
         if ((Input.GetKeyDown(shotLeft) == true || Input.GetKeyDown(shotRight) == true) && coolDown == false)
@@ -45,6 +47,7 @@ public class Projectile : MonoBehaviour
         {
             GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * shotingDirection, 0, 10), transform.rotation);
             onShot = false;
+            mana.SetMana(-20);
             timeShot = Time.time;
             Destroy(projectile, projectileCoolDown);
         }
@@ -53,6 +56,6 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        instantiateProjectile();
+        InstantiateProjectile();
     }
 }

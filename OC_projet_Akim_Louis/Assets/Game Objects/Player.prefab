@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4583372970241566421}
   - component: {fileID: -9081338647816514941}
   - component: {fileID: 1360266270841382680}
+  - component: {fileID: 609968127260508560}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -186,12 +187,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: {fileID: 0}
-  CurrentProjectil: {fileID: 0}
+  CurrentProjectile: {fileID: 0}
   shotingDirection: 0
-  projectilCoolDown: 2
+  projectileCoolDown: 2
   coolDown: 0
   onShot: 0
   chosenColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &609968127260508560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4583372970241566420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62eb10b0ac62b4745b94462ef97f2133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4583372970669227830
 GameObject:
   m_ObjectHideFlags: 0
