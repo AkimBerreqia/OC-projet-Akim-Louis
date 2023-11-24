@@ -23,6 +23,11 @@ public class Mana : MonoBehaviour
             currentMana = maxMana;
         }
 
+        else if (currentMana < -increaseBy && increaseBy < 0)
+        {
+            currentMana = 0;
+        }
+
         else
         {
             currentMana += increaseBy;

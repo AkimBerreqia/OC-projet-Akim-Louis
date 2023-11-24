@@ -43,7 +43,7 @@ public class Projectile : MonoBehaviour
             coolDown = true;
         }
 
-        if (onShot == true)
+        if (onShot == true && mana.currentMana > 0)
         {
             GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * shotingDirection, 0, 10), transform.rotation);
             onShot = false;
