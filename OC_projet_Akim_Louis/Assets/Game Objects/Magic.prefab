@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8693425640737862895}
   - component: {fileID: 3561840142107621188}
-  - component: {fileID: 1201584554209421680}
   m_Layer: 0
   m_Name: Magic
   m_TagString: Untagged
@@ -85,20 +84,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1201584554209421680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9031459866945030389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fb23be4f09ed3e42b8fa95f438c84b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentProjectil: {fileID: 9031459866945030389}
-  ProjectilMovement: {fileID: 8693425640737862895}
-  ProjectilColor: {fileID: 3561840142107621188}
-  projectil: {fileID: 0}
-  playerMovement: {fileID: 0}

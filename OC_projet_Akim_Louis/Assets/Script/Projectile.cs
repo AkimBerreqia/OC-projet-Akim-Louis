@@ -11,6 +11,8 @@ public class Projectile : MonoBehaviour
     public GameObject CurrentProjectile;
 
     public int shotingDirection;
+    public int newShotingDirection = 1;
+    // Create a list of directions int[]
     public float timeShot;
     public float projectileCoolDown = 2f;
     public bool coolDown = false;
@@ -21,10 +23,14 @@ public class Projectile : MonoBehaviour
 
     void InstantiateProjectile()
     {
-        if (Time.time - timeShot >= projectileCoolDown)
+        if (Time.time - timeShot >= projectileCoolDown * 0.5)
         {
             coolDown = false;
-            mana.canRecover = true;
+            
+            if (Time.time - timeShot >= projectileCoolDown * 1.5)
+            {
+                mana.canRecover = true;
+            }
         }
 
         if ((Input.GetKeyDown(shotLeft) == true || Input.GetKeyDown(shotRight) == true) && coolDown == false)
@@ -45,7 +51,9 @@ public class Projectile : MonoBehaviour
 
         if (onShot == true && mana.currentMana > 0)
         {
-            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * shotingDirection, 0, 10), transform.rotation);
+            // Create a list of directions for each projectil and refer to with the index
+            newShotingDirection *= shotingDirection;
+            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * newShotingDirection, 0, 10), transform.rotation);
             onShot = false;
             mana.SetMana(-20);
             timeShot = Time.time;

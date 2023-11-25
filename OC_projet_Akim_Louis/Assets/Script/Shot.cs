@@ -6,7 +6,6 @@ public class Shot : MonoBehaviour
 {
 
     public GameObject CurrentProjectile;
-    public Transform ProjectileMovement;
     public Renderer ProjectileColor;
     public Projectile projectile;
     public PlayerMovement playerMovement;
@@ -20,6 +19,6 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentProjectile.transform.Translate(Vector2.right * projectile.shotingDirection * playerMovement.speed * Time.deltaTime);
+        CurrentProjectile.transform.Translate(Vector2.right * projectile.newShotingDirection * playerMovement.speed * Time.deltaTime);
     }
 }

@@ -1025,11 +1025,22 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 3561840142107621188, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
   m_PrefabInstance: {fileID: 1804613464}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1725730667 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8693425640737862895, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-  m_PrefabInstance: {fileID: 1804613464}
+--- !u!114 &1725730668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725730664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb23be4f09ed3e42b8fa95f438c84b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentProjectile: {fileID: 1725730664}
+  ProjectileColor: {fileID: 1725730666}
+  projectile: {fileID: 1772752602}
+  playerMovement: {fileID: 1772752597}
 --- !u!1 &1731616251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,42 +1173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1772752600}
     m_Modifications:
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: projectil
-      value: 
-      objectReference: {fileID: 1772752602}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1772752602}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: ProjectilColor
-      value: 
-      objectReference: {fileID: 1725730666}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 1772752597}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: ProjectileColor
-      value: 
-      objectReference: {fileID: 1725730666}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: CurrentProjectil
-      value: 
-      objectReference: {fileID: 1725730664}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: CurrentProjectile
-      value: 
-      objectReference: {fileID: 1725730664}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: ProjectilMovement
-      value: 
-      objectReference: {fileID: 1725730667}
-    - target: {fileID: 1201584554209421680, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
-      propertyPath: ProjectileMovement
-      value: 
-      objectReference: {fileID: 1725730667}
     - target: {fileID: 8693425640737862895, guid: 932a4e82321d5ef428674912d4f00d39, type: 3}
       propertyPath: m_RootOrder
       value: 1
