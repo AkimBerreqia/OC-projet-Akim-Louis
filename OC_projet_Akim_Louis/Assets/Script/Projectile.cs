@@ -10,11 +10,12 @@ public class Projectile : MonoBehaviour
     public Mana mana;
     public GameObject CurrentProjectile;
 
+    public bool leftShotingDirection = false;
+    public bool rightShotingDirection = false;
     public int shotingDirection;
-    public int newShotingDirection = 1;
-    // Create a list of directions int[]
     public float timeShot;
     public float projectileCoolDown = 2f;
+    public float manaCost = -20;
     public bool coolDown = false;
     public bool onShot = false;
     private string shotLeft = "j";
@@ -23,10 +24,12 @@ public class Projectile : MonoBehaviour
 
     void InstantiateProjectile()
     {
-        if (Time.time - timeShot >= projectileCoolDown * 0.5)
+        if (Time.time - timeShot >= projectileCoolDown * 0.5 && mana.currentMana >= manaCost)
         {
             coolDown = false;
-            
+            leftShotingDirection = false;
+            rightShotingDirection = false;
+
             if (Time.time - timeShot >= projectileCoolDown * 1.5)
             {
                 mana.canRecover = true;
@@ -37,25 +40,26 @@ public class Projectile : MonoBehaviour
         {
             if (Input.GetKeyDown(shotLeft) == true)
             {
+                leftShotingDirection = true;
                 shotingDirection = -1;
                 chosenColor = power.colorParts[0];
             }
             else if (Input.GetKeyDown(shotRight) == true)
             {
+                rightShotingDirection = true;
                 shotingDirection = 1;
                 chosenColor = power.colorParts[1];
             }
             onShot = true;
             coolDown = true;
+            mana.canRecover = false;
         }
 
         if (onShot == true && mana.currentMana > 0)
         {
-            // Create a list of directions for each projectil and refer to with the index
-            newShotingDirection *= shotingDirection;
-            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * newShotingDirection, 0, 10), transform.rotation);
+            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * shotingDirection, 0, 10), transform.rotation);
             onShot = false;
-            mana.SetMana(-20);
+            mana.SetMana(manaCost);
             timeShot = Time.time;
             Destroy(projectile, projectileCoolDown);
         }
