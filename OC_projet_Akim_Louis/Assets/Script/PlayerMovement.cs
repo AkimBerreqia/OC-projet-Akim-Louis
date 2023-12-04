@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Flip();
+
+        groundCheck.position = transform.position - new Vector3(0, 1.2f);
     }
 
     private bool IsGrounded()

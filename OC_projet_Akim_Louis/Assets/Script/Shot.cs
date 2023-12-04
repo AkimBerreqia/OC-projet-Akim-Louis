@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class Shot : MonoBehaviour
 {
-
+    public Mana mana;
+    public Enemy enemy;
+    public Projectile projectile;
+    
     public GameObject CurrentProjectile;
     public Renderer ProjectileColor;
-    public Projectile projectile;
     public PlayerMovement playerMovement;
+    
+    public LayerMask enemyLayers;
     public int currentShotingDireciton;
+    public float attackRange = 0.5f;
+    public float attackDamage = 20f;
+
+    void Attack()
+    {
+        Collider2D[] hitEnnemies = Physics2D.OverlapCircleAll(CurrentProjectile.transform.position, attackRange, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,5 +47,13 @@ public class Shot : MonoBehaviour
     void Update()
     {
         CurrentProjectile.transform.Translate(Vector2.right * currentShotingDireciton * playerMovement.speed * Time.deltaTime);
+
+        Attack();
+    }
+
+    // It makes the attack range visible
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(CurrentProjectile.transform.position, attackRange);
     }
 }

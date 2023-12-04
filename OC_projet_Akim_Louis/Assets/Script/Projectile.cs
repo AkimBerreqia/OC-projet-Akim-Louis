@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour
             }
         }
 
-        if ((Input.GetKeyDown(shotLeft) == true || Input.GetKeyDown(shotRight) == true) && coolDown == false)
+        if ((Input.GetKeyDown(shotLeft) == true || Input.GetKeyDown(shotRight) == true) && coolDown == false && mana.currentMana > 0)
         {
             if (Input.GetKeyDown(shotLeft) == true)
             {

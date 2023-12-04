@@ -23,7 +23,7 @@ public class Mana : MonoBehaviour
             currentMana = maxMana;
         }
 
-        else if (currentMana < -increaseBy && increaseBy < 0)
+        else if (currentMana < System.Math.Abs(increaseBy) && increaseBy < 0)
         {
             currentMana = 0;
         }
