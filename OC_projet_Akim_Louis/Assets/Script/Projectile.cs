@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
 
         if (onShot == true && mana.currentMana > 0)
         {
-            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(2 * shotingDirection, 0, 10), transform.rotation);
+            GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(), transform.rotation);
             onShot = false;
             mana.SetMana(manaCost);
             timeShot = Time.time;

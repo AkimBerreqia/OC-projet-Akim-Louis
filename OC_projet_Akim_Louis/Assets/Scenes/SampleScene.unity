@@ -3297,9 +3297,21 @@ PrefabInstance:
       propertyPath: CurrentProjectile
       value: 
       objectReference: {fileID: 1725730664}
+    - target: {fileID: 3368414424448666649, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4583372970241566420, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583372970241566420, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583372970241566422, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4583372970241566424, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
       propertyPath: m_RootOrder
@@ -3343,6 +3355,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4583372970241566424, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4583372970669227831, guid: ee3b3092968b6e5409e099aa442b8766, type: 3}
+      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
