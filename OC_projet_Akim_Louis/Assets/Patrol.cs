@@ -4,38 +4,30 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
+    public float speed;
 
-    [SerializeField] float moveSpeed = 1f;
+    private bool movingRight = true;
 
-    Rigidbody2D myRigidbody;
-    BoxCollider2D myboxCollider;
+    public Transform groundDetection;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        myRigidbody = GetComponent<Rigidbody2D>();
-        myboxCollider = GetComponent<BoxCollider2D>();
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if(IsFacingRight())
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
+
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
+
+
+        if(groundInfo.collider == false)
         {
-            myRigidbody.velocity = new Vector2(moveSpeed, 0f);
-        } else
-        {
-            myRigidbody.velocity = new Vector2(-moveSpeed, 0f);
+            if(movingRight == true)
+            {
+                transform.eulerAngles = new Vector3(0,-180,0);
+                movingRight = false;
+            } else {
+                transform.eulerAngles = new Vector3(0,0,0);
+                movingRight = true;
+            }
+            
         }
-
-    }
-    private bool IsFacingRight()
-    {
-        return transform.localScale.x > Mathf.Epsilon;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        transform.localScale = new Vector2(-(Mathf.Sign(myRigidbody.velocity.x)),transform.localScale.y);
     }
 }
