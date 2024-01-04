@@ -4,37 +4,45 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public Power power;
+    
     public float currentHealth;
     public float maxHealth = 100;
     public float invincibleFramesCoolDown = 0.4f;
-    public float initialDamage = 0f;
+    public float initialHealthSetting = 0f;
     public float height = 70;
     public float width = 360;
     public float newWidth;
+    public bool canRecover = false;
 
     public SpriteRenderer playerColor;
     public Rigidbody2D playerMass;
-    public RectTransform HealthTransform;
+    public RectTransform healthTransform;
 
-    public void TakeDamage(float damage)
+    public void SetHealth(float increaseBy)
     {
-        if (Time.time - invincibleFramesCoolDown >= initialDamage)
+        if (Time.time - invincibleFramesCoolDown >= initialHealthSetting)
         {
-            if (currentHealth < System.Math.Abs(damage))
+            if (increaseBy > maxHealth - currentHealth)
+            {
+                currentHealth = maxHealth;
+            }
+
+            else if (currentHealth < System.Math.Abs(increaseBy) && increaseBy < 0)
             {
                 currentHealth = 0;
             }
 
             else
             {
-                currentHealth -= damage;
+                currentHealth += increaseBy;
             }
         }
 
-        initialDamage = Time.time;
+        initialHealthSetting = Time.time;
 
         newWidth = currentHealth / maxHealth * width;
-        HealthTransform.sizeDelta = new Vector2(newWidth, height);
+        healthTransform.sizeDelta = new Vector2(newWidth, height);
     }
 
     void Die()
@@ -56,6 +64,15 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth == 0)
         {
             Die();
+        }
+
+        if (canRecover == true)
+            SetHealth(power.currentPlayerRecovery);
+            canRecover = false;
+
+        if (Input.GetKeyDown("g"))
+        {
+            SetHealth(-20);
         }
     }
 }

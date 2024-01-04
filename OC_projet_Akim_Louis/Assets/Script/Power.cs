@@ -19,22 +19,29 @@ public class Power : MonoBehaviour
     public GameObject OpenComplexSpellsMenu;
     public GameObject CloseComplexSpellsMenu;
 
-    private string[] basicLeftArm = { "0", "1", "2", "3", "4" };
-    private string[] basicRightArm = { "9", "5", "6", "7", "8" };
-    private string[] basicElements = { "neutral", "fire", "wind", "water", "lightning" };
-    private string[] complexLeftArm = { "1", "2" };
-    private string[] complexRightArm = { "9", "0" };
-    private string[] complexElements = { "shadow", "light" };
+    public SpriteRenderer Arm;
 
-    private string[] parts = { "neutral", "neutral" };
-    public Color[] colorParts = { Color.gray, Color.gray };
+    // private string[] states = {keyboardAssignment, color, manaCost, damage, speed, ennemyDamage, ennemySpeed, playerRecovery};
+    private object[,] basicStatesArray = {
+        { "1", Color.gray, 0f, 20f, 1f, 1f, 1f, 0f }, // neutral
+        { "2", Color.red, -20f, 20f, 1f, 1f, 1f, 0f }, // fire
+        { "3", Color.blue, -20f, 20f, 1f, .5f, .5f, 0f }, // water
+        { "4", Color.yellow, -20f, 40f, 1.5f, 1f, 1f, 0f }, // lightning
+        { "5", Color.green, -20f, 0f, 0f, 0f, 0f, 10f } // wind
+    };
 
-    private Color[] BasicColorList = 
-        { Color.gray, Color.red, Color.green, Color.blue, Color.yellow };
-    private Color[] ComplexColorList = { Color.black, Color.white };
+    private object[,] complexStatesArray = {
+        { "1", Color.black, -30f, 50f, .5f, 1f, 1f, 0f }, // shadow
+        { "2", Color.white, -30f, 20f, 4f, 1f, 1f, 0f } // light
+    };
+
     public Color CurrentColor = Color.gray;
-    public SpriteRenderer LeftArm;
-    public SpriteRenderer RightArm;
+    public float currentManaCost = 0;
+    public float currentDamage = 20f;
+    public float speedMultiplicator = 1f;
+    public float ennemyDamageMultiplicator = 1f;
+    public float ennemySpeedMultiplicator = 1f;
+    public float currentPlayerRecovery = 0f;
 
     private bool isShifted = false;
     private bool isTabed = false;
@@ -42,34 +49,33 @@ public class Power : MonoBehaviour
     public void ChangeElement(Material Arm, Color color)
     {
         Arm.SetColor("_Color", color);
-        CurrentColor = color;
     }
 
-    void FindElement(Color[] ColorList, string[] leftArm, string[] rightArm)
+    // Update current stuff
+    void FindElement(object[,] statesArray)
     {
-        for (int i = 0; i < leftArm.Length; i++)
+        for (int i = 0; i < statesArray.GetLength(0); i++)
         {
-            if (Input.GetKeyDown(leftArm[i]))
+            if (Input.GetKeyDown(statesArray[i, 0].ToString()))
             {
-                ChangeElement(LeftArm.material, ColorList[i]);
-                parts[0] = basicElements[Convert.ToInt32(i)];
-                colorParts[0] = ColorList[i];
-            }
-            else if (Input.GetKeyDown(rightArm[i]))
-            {
-                ChangeElement(RightArm.material, ColorList[i]);
-                parts[1] = basicElements[Convert.ToInt32(i)];
-                colorParts[1] = ColorList[i];
+                CurrentColor = (Color)statesArray[i, 1];
+                currentManaCost = (float)statesArray[i, 2];
+                currentDamage = (float)statesArray[i, 3];
+                speedMultiplicator = (float)statesArray[i, 4];
+                ennemyDamageMultiplicator = (float)statesArray[i, 5];
+                ennemySpeedMultiplicator = (float)statesArray[i, 6];
+                currentPlayerRecovery = (float)statesArray[i, 7];
+
+                ChangeElement(Arm.material, CurrentColor);
             }
         }
-        Debug.Log("bras gauche: " + parts[0] + " - bras droit: " + parts[1]);
+        Debug.Log("bras: " + CurrentColor);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        LeftArm.material.SetColor("_Color", Color.gray);
-        RightArm.material.SetColor("_Color", Color.gray);
+        Arm.material.SetColor("_Color", Color.gray);
 
         SpellsMenu.SetActive(false);
 
@@ -122,7 +128,7 @@ public class Power : MonoBehaviour
         // It opens the complex spells menu
         if (isShifted == true)
         {
-            FindElement(ComplexColorList, complexLeftArm, complexRightArm);
+            FindElement(complexStatesArray);
 
             BasicSpellsTitle.SetActive(false);
             BasicSpellsText.SetActive(false);
@@ -136,13 +142,13 @@ public class Power : MonoBehaviour
             OpenComplexSpellsMenu.SetActive(false);
             CloseComplexSpellsMenu.SetActive(true);
 
-            Debug.Log("shadow : 1 | 9; light : 2 | 0");
+            Debug.Log("shadow : 1; light : 2");
         }
 
         // It opens the basic spells menu
         else if (isTabed == true)
         {
-            FindElement(BasicColorList, basicLeftArm, basicRightArm);
+            FindElement(basicStatesArray);
 
             SpellsMenu.SetActive(true);
 
@@ -158,7 +164,7 @@ public class Power : MonoBehaviour
             OpenComplexSpellsMenu.SetActive(true);
             CloseComplexSpellsMenu.SetActive(false);
 
-            Debug.Log("neutral : 0 | 9; fire : 1 | 5; wind : 2 | 6; water : 3 | 7; lightning : 4 | 8");
+            Debug.Log("neutral : 1; fire : 2; wind : 3; water : 4; lightning : 5");
             Debug.Log("Press 'left shift' for complex powers: ");
         }
 

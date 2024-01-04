@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Patrol : MonoBehaviour
 {
+    public Power power;
+
     public float speed;
 
     private bool movingRight = true;
@@ -12,7 +14,7 @@ public class Patrol : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * power.ennemySpeedMultiplicator * Time.deltaTime);
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 2f);
 

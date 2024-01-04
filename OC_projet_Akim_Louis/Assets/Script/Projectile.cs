@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-
+    public PlayerHealth playerHealth;
     public Power power;
     public Mana mana;
     public GameObject CurrentProjectile;
@@ -15,7 +15,6 @@ public class Projectile : MonoBehaviour
     public int shotingDirection;
     public float timeShot;
     public float projectileCoolDown = 2f;
-    public float manaCost = -20;
     public bool coolDown = false;
     public bool onShot = false;
     private string shotLeft = "j";
@@ -24,7 +23,7 @@ public class Projectile : MonoBehaviour
 
     void InstantiateProjectile()
     {
-        if (Time.time - timeShot >= projectileCoolDown * 0.5 && mana.currentMana >= manaCost)
+        if (Time.time - timeShot >= projectileCoolDown * 0.5 && mana.currentMana >= power.currentManaCost)
         {
             coolDown = false;
             leftShotingDirection = false;
@@ -42,14 +41,13 @@ public class Projectile : MonoBehaviour
             {
                 leftShotingDirection = true;
                 shotingDirection = -1;
-                chosenColor = power.colorParts[0];
             }
             else if (Input.GetKeyDown(shotRight) == true)
             {
                 rightShotingDirection = true;
                 shotingDirection = 1;
-                chosenColor = power.colorParts[1];
             }
+            chosenColor = power.CurrentColor;
             onShot = true;
             coolDown = true;
             mana.canRecover = false;
@@ -59,9 +57,14 @@ public class Projectile : MonoBehaviour
         {
             GameObject projectile = Instantiate(CurrentProjectile, transform.position + new Vector3(), transform.rotation);
             onShot = false;
-            mana.SetMana(manaCost);
+            mana.SetMana(power.currentManaCost);
             timeShot = Time.time;
             Destroy(projectile, projectileCoolDown);
+
+            if (power.CurrentColor == Color.green)
+            {
+                playerHealth.canRecover = true;
+            }
         }
     }
 

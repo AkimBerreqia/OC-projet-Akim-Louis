@@ -7,6 +7,7 @@ public class Shot : MonoBehaviour
     public Mana mana;
     public Enemy enemy;
     public Projectile projectile;
+    public Power power;
     
     public GameObject CurrentProjectile;
     public Renderer ProjectileColor;
@@ -15,7 +16,6 @@ public class Shot : MonoBehaviour
     public LayerMask enemyLayers;
     public int currentShotingDireciton;
     public float attackRange = 0.5f;
-    public float attackDamage = 20f;
 
     void Attack()
     {
@@ -23,7 +23,7 @@ public class Shot : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(power.currentDamage);
         }
     }
 
@@ -46,7 +46,7 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentProjectile.transform.Translate(Vector2.right * currentShotingDireciton * playerMovement.speed * Time.deltaTime);
+        CurrentProjectile.transform.Translate(Vector2.right * currentShotingDireciton * power.speedMultiplicator * playerMovement.speed * Time.deltaTime);
 
         Attack();
     }
