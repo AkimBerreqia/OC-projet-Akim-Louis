@@ -20,4 +20,4 @@
 
 # How to play the game
 
-[Download the folder for playing the game]({{folder name='Game Test'}})
+[Download the folder for playing the game]({{file name='Game Test'}})
