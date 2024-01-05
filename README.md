@@ -34,3 +34,8 @@
   - [left shift] -> Get access to the complex spell inventory
 - [J]/[K] -> Shoot spells left and right
 - [left shift] -> Dash
+
+
+## Source code
+
+[OC_projet_Akim_Louis/Assets/Script](OC_projet_Akim_Louis/Assets/Script)
