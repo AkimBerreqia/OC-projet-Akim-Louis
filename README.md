@@ -38,6 +38,6 @@
 
 ## Source code
 
-[OC_projet_Akim_Louis/Assets/Script](OC_projet_Akim_Louis/Assets/Script)
-
 *The source code is only the files in .cs.*
+
+[OC_projet_Akim_Louis/Assets/Script](OC_projet_Akim_Louis/Assets/Script)
