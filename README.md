@@ -23,3 +23,14 @@
 1. Click on the link below to download the folder containing the game : [https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FAkimBerreqia%2FOC-projet-Akim-Louis%2Ftree%2Fmain%2FGame%2520Test](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FAkimBerreqia%2FOC-projet-Akim-Louis%2Ftree%2Fmain%2FGame%2520Test)
 
 2. Open the file : OC_projet_Akim_Louis.exe
+
+
+## Controls
+
+- [A]/[D] or [left arrow]/[right arrow] -> Move left and right
+- [space bar] -> Jump
+  - [space bar] -> Double jump
+- [tab] -> Get access to the basic spell inventory
+  - [left shift] -> Get access to the complex spell inventory
+- [J]/[K] -> Shoot spells left and right
+- [left shift] -> Dash
