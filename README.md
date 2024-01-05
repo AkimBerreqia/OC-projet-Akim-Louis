@@ -16,3 +16,8 @@
 5. Go to Unity Hub and click on the open button
 
 6. Open the folder *OC_projet_Akim_Louis* with the path from step 4
+
+
+# How to play the game
+
+[Download the folder for playing the game]({{folder name='Game Test'}})
