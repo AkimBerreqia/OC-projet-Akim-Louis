@@ -34,6 +34,7 @@
   - [left shift] -> Get access to the complex spell inventory
 - [J]/[K] -> Shoot spells left and right
 - [left shift] -> Dash
+- [escape button] -> Pause Menu
 
 
 
