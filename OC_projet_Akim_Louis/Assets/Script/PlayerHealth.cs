@@ -5,7 +5,15 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Power power;
-    
+
+    public GameObject PlayerInfos;
+    public GameObject ArmIcon;
+    public GameObject GameOverPauseMenu;
+    public GameObject PauseTitle;
+    public GameObject GameOverTitle;
+    public GameObject ContinueButton;
+
+
     public float currentHealth;
     public float maxHealth = 100;
     public float invincibleFramesCoolDown = 0.4f;
@@ -14,6 +22,8 @@ public class PlayerHealth : MonoBehaviour
     public float width = 360;
     public float newWidth;
     public bool canRecover = false;
+    public bool canMove = true;
+    public bool isAlive = true;
 
     public SpriteRenderer playerColor;
     public Rigidbody2D playerMass;
@@ -45,10 +55,28 @@ public class PlayerHealth : MonoBehaviour
         healthTransform.sizeDelta = new Vector2(newWidth, height);
     }
 
-    void Die()
+    public void Die()
     {
         playerColor.material.SetColor("_Color", Color.gray);
         playerMass.mass = 1;
+        canMove = false;
+    }
+
+    public void Pause()
+    {
+        // Pause the game
+    }
+
+    void GameOver()
+    {
+        Die();
+        isAlive = false;
+        PlayerInfos.SetActive(false);
+        ArmIcon.SetActive(false);
+        GameOverPauseMenu.SetActive(true);
+        GameOverTitle.SetActive(true);
+        PauseTitle.SetActive(false);
+        ContinueButton.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -56,6 +84,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         playerMass.mass = 20;
+        GameOverPauseMenu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -63,7 +92,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (currentHealth == 0)
         {
-            Die();
+            GameOver();
         }
 
         if (canRecover == true)

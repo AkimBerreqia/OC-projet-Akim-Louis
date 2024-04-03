@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class Power : MonoBehaviour
 {
+    public GameOverAndPauseMenu gameOverAndPauseMenu;
+    public PlayerHealth playerHealth;
+
     public GameObject SpellsMenu;
 
     public GameObject BasicSpellsTitle;
@@ -95,96 +98,99 @@ public class Power : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // If basic spells menu is closed when you click on "Tab",
-        // it initializes the bools for the basic and complex spells menus
-        if (Input.GetKeyDown(KeyCode.Tab) && isTabed == false)
+        if (gameOverAndPauseMenu.isPaused == false && playerHealth.isAlive == true)
         {
-            isTabed = true;
-            isShifted = false;
-        }
+            // If basic spells menu is closed when you click on "Tab",
+            // it initializes the bools for the basic and complex spells menus
+            if (Input.GetKeyDown(KeyCode.Tab) && isTabed == false)
+            {
+                isTabed = true;
+                isShifted = false;
+            }
 
-        // If basic spells menu is opened and complex spells menu is closed,
-        // the complex spells menu can be opened
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == false)
-        {
-            isShifted = true;
-        }
+            // If basic spells menu is opened and complex spells menu is closed,
+            // the complex spells menu can be opened
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == false)
+            {
+                isShifted = true;
+            }
 
-        // If basic and complex spells menus are opened when you click on "LeftShift",
-        // the complex spells menu can be closed and then can return back on the basic one
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == true)
-        {
-            isShifted = false;
-        }
+            // If basic and complex spells menus are opened when you click on "LeftShift",
+            // the complex spells menu can be closed and then can return back on the basic one
+            else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == true)
+            {
+                isShifted = false;
+            }
 
-        // If any of the menus are opened when you click on "Tab",
-        // every menus can be closed
-        else if (Input.GetKeyDown(KeyCode.Tab) && isTabed == true)
-        { 
-            isTabed = false;
-            isShifted = false;
-        }
+            // If any of the menus are opened when you click on "Tab",
+            // every menus can be closed
+            else if (Input.GetKeyDown(KeyCode.Tab) && isTabed == true)
+            { 
+                isTabed = false;
+                isShifted = false;
+            }
 
-        // It opens the complex spells menu
-        if (isShifted == true)
-        {
-            FindElement(complexStatesArray);
+            // It opens the complex spells menu
+            if (isShifted == true)
+            {
+                FindElement(complexStatesArray);
 
-            BasicSpellsTitle.SetActive(false);
-            BasicSpellsText.SetActive(false);
+                BasicSpellsTitle.SetActive(false);
+                BasicSpellsText.SetActive(false);
 
-            ComplexSpellsTitle.SetActive(true);
-            ComplexSpellsText.SetActive(true);
+                ComplexSpellsTitle.SetActive(true);
+                ComplexSpellsText.SetActive(true);
 
-            OpenBasicSpellsMenu.SetActive(false);
-            CloseBasicSpellsMenu.SetActive(true);
+                OpenBasicSpellsMenu.SetActive(false);
+                CloseBasicSpellsMenu.SetActive(true);
 
-            OpenComplexSpellsMenu.SetActive(false);
-            CloseComplexSpellsMenu.SetActive(true);
+                OpenComplexSpellsMenu.SetActive(false);
+                CloseComplexSpellsMenu.SetActive(true);
 
-            Debug.Log("shadow : 1; light : 2");
-        }
+                Debug.Log("shadow : 1; light : 2");
+            }
 
-        // It opens the basic spells menu
-        else if (isTabed == true)
-        {
-            FindElement(basicStatesArray);
+            // It opens the basic spells menu
+            else if (isTabed == true)
+            {
+                FindElement(basicStatesArray);
 
-            SpellsMenu.SetActive(true);
+                SpellsMenu.SetActive(true);
 
-            BasicSpellsTitle.SetActive(true);
-            BasicSpellsText.SetActive(true);
+                BasicSpellsTitle.SetActive(true);
+                BasicSpellsText.SetActive(true);
 
-            ComplexSpellsTitle.SetActive(false);
-            ComplexSpellsText.SetActive(false);
+                ComplexSpellsTitle.SetActive(false);
+                ComplexSpellsText.SetActive(false);
 
-            OpenBasicSpellsMenu.SetActive(false);
-            CloseBasicSpellsMenu.SetActive(true);
+                OpenBasicSpellsMenu.SetActive(false);
+                CloseBasicSpellsMenu.SetActive(true);
 
-            OpenComplexSpellsMenu.SetActive(true);
-            CloseComplexSpellsMenu.SetActive(false);
+                OpenComplexSpellsMenu.SetActive(true);
+                CloseComplexSpellsMenu.SetActive(false);
 
-            Debug.Log("neutral : 1; fire : 2; wind : 3; water : 4; lightning : 5");
-            Debug.Log("Press 'left shift' for complex powers: ");
-        }
+                Debug.Log("neutral : 1; fire : 2; wind : 3; water : 4; lightning : 5");
+                Debug.Log("Press 'left shift' for complex powers: ");
+            }
 
-        // It closes every spells menus
-        else
-        {
-            SpellsMenu.SetActive(false);
+            // It closes every spells menus
+            else
+            {
+                SpellsMenu.SetActive(false);
 
-            BasicSpellsTitle.SetActive(false);
-            BasicSpellsText.SetActive(false);
+                BasicSpellsTitle.SetActive(false);
+                BasicSpellsText.SetActive(false);
 
-            ComplexSpellsTitle.SetActive(false);
-            ComplexSpellsText.SetActive(false);
+                ComplexSpellsTitle.SetActive(false);
+                ComplexSpellsText.SetActive(false);
 
-            OpenBasicSpellsMenu.SetActive(true);
-            CloseBasicSpellsMenu.SetActive(false);
+                OpenBasicSpellsMenu.SetActive(true);
+                CloseBasicSpellsMenu.SetActive(false);
 
-            OpenComplexSpellsMenu.SetActive(false);
-            CloseComplexSpellsMenu.SetActive(false);
-            Debug.Log("Press 'tab' for basic powers: ");
+                OpenComplexSpellsMenu.SetActive(false);
+                CloseComplexSpellsMenu.SetActive(false);
+                Debug.Log("Press 'tab' for basic powers: ");
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public float height = 70;
     public float width = 360;
     public float newWidth;
+    public bool canMove = true;
 
     public SpriteRenderer enemyColor;
     public Rigidbody2D enemyMass;
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour
     {
         enemyColor.material.SetColor("_Color", Color.gray);
         enemyMass.mass = 20;
+        canMove = false;
     }
 
     // Start is called before the first frame update

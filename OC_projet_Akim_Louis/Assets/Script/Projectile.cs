@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public Power power;
     public Mana mana;
     public GameObject CurrentProjectile;
+    public GameOverAndPauseMenu gameOverAndPauseMenu;
 
     public bool leftShotingDirection = false;
     public bool rightShotingDirection = false;
@@ -71,6 +72,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InstantiateProjectile();
+        if (gameOverAndPauseMenu.isPaused == false && playerHealth.isAlive == true)
+        {
+            InstantiateProjectile();
+        }
     }
 }

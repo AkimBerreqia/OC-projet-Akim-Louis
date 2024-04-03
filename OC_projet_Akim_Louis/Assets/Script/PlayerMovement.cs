@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerHealth playerHealth;
+    public GameOverAndPauseMenu gameOverAndPauseMenu;
+
     private float horizontal;
     public float speed = 8f;
     public float jumpingPower = 16f;
@@ -24,44 +27,47 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        if (isDashing)
+        if (playerHealth.canMove && gameOverAndPauseMenu.isPaused == false)
         {
-            return;
-        }
+            if (isDashing)
+            {
+                return;
+            }
 
-        horizontal = Input.GetAxisRaw("Horizontal");
+            horizontal = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        if (IsGrounded() && !Input.GetButton("Jump"))
-        {
-            doubleJump = false;
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (IsGrounded() || doubleJump)
+            if (Input.GetButtonDown("Jump") && IsGrounded())
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-
-                doubleJump = !doubleJump;
             }
-        }
 
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
+            if (IsGrounded() && !Input.GetButton("Jump"))
+            {
+                doubleJump = false;
+            }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
-        {
-            StartCoroutine(Dash());
-        }
+            if (Input.GetButtonDown("Jump"))
+            {
+                if (IsGrounded() || doubleJump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
-        Flip();
+                    doubleJump = !doubleJump;
+                }
+            }
+
+            if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+            {
+                StartCoroutine(Dash());
+            }
+
+            Flip();
+        }
     }
 
     private void FixedUpdate()
