@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     public Power power;
+    public SetHealth setHealth;
 
     public GameObject PlayerInfos;
     public GameObject ArmIcon;
@@ -13,11 +14,11 @@ public class PlayerHealth : MonoBehaviour
     public GameObject GameOverTitle;
     public GameObject ContinueButton;
 
-
     public float currentHealth;
     public float maxHealth = 100;
-    public float invincibleFramesCoolDown = 0.4f;
-    public float initialHealthSetting = 0f;
+    public float invincibleFramesCoolDown = 1f;
+    public float initialHealthSetting;
+    public float initialDamage;
     public float height = 70;
     public float width = 360;
     public float newWidth;
@@ -25,33 +26,32 @@ public class PlayerHealth : MonoBehaviour
     public bool canMove = true;
     public bool isAlive = true;
 
+    public object[] healthInfos;
+
     public SpriteRenderer playerColor;
     public Rigidbody2D playerMass;
     public RectTransform healthTransform;
 
-    public void SetHealth(float increaseBy)
+    public void PlayerRecovers()
     {
-        if (Time.time - invincibleFramesCoolDown >= initialHealthSetting)
-        {
-            if (increaseBy > maxHealth - currentHealth)
-            {
-                currentHealth = maxHealth;
-            }
+        healthInfos = setHealth.GainHealth(power.currentPlayerRecovery, invincibleFramesCoolDown, currentHealth, maxHealth, newWidth, width, height, healthTransform, initialHealthSetting);
 
-            else if (currentHealth < System.Math.Abs(increaseBy) && increaseBy < 0)
-            {
-                currentHealth = 0;
-            }
+        currentHealth = (float)healthInfos[0];
+        initialHealthSetting = (float)healthInfos[1];
 
-            else
-            {
-                currentHealth += increaseBy;
-            }
-        }
+        newWidth = (float)healthInfos[2];
+        healthTransform.sizeDelta = new Vector2(newWidth, height);
+        canRecover = false;
+    }
 
-        initialHealthSetting = Time.time;
+    public void PlayerLoosesHealth()
+    {
+        healthInfos = setHealth.TakeDamage(20f, invincibleFramesCoolDown, currentHealth, maxHealth, newWidth, width, height, healthTransform, initialDamage);
 
-        newWidth = currentHealth / maxHealth * width;
+        currentHealth = (float)healthInfos[0];
+        initialDamage = (float)healthInfos[1];
+
+        newWidth = (float)healthInfos[2];
         healthTransform.sizeDelta = new Vector2(newWidth, height);
     }
 
@@ -60,11 +60,6 @@ public class PlayerHealth : MonoBehaviour
         playerColor.material.SetColor("_Color", Color.gray);
         playerMass.mass = 1;
         canMove = false;
-    }
-
-    public void Pause()
-    {
-        // Pause the game
     }
 
     void GameOver()
@@ -95,13 +90,25 @@ public class PlayerHealth : MonoBehaviour
             GameOver();
         }
 
-        if (canRecover == true)
-            SetHealth(power.currentPlayerRecovery);
-            canRecover = false;
-
-        if (Input.GetKeyDown("g"))
+        else if (canRecover == true)
         {
-            SetHealth(-20);
+            PlayerRecovers();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "DeadZone")
+        {
+            GameOver();
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy" && collision.GetComponent<Enemy>().isAlive == true)
+        {
+            PlayerLoosesHealth();
         }
     }
 }

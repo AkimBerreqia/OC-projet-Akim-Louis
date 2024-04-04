@@ -4,38 +4,39 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public SetHealth setHealth;
+    public Power power;
+
     public float currentHealth;
     public float maxHealth = 100;
-    public float invincibleFramesCoolDown = 0.2f;
-    public float initialDamage = 0f;
+    public float invincibleFramesCoolDown = 1f;
+    public float initialDamage;
     public float height = 70;
     public float width = 360;
     public float newWidth;
+    public float lengthTime = 1f;
+    public float initialTime;
+    public float fireDamage;
+
     public bool canMove = true;
+    public bool isAlive = true;
+    public bool isFired = false;
+
+    public object[] healthInfos;
 
     public SpriteRenderer enemyColor;
     public Rigidbody2D enemyMass;
-    public RectTransform HealthTransform;
+    public RectTransform healthTransform;
 
-    public void TakeDamage(float damage)
+    public void EnemyGetsDamaged(float damage)
     {
-        if (Time.time - invincibleFramesCoolDown >= initialDamage)
-        {
-            if (currentHealth < System.Math.Abs(damage))
-            {
-                currentHealth = 0;
-            }
+        healthInfos = setHealth.TakeDamage(damage, invincibleFramesCoolDown, currentHealth, maxHealth, newWidth, width, height, healthTransform, initialDamage);
 
-            else
-            {
-                currentHealth -= damage;
-            }
-        }
+        currentHealth = (float)healthInfos[0];
+        initialDamage = (float)healthInfos[1];
 
-        initialDamage = Time.time;
-
-        newWidth = currentHealth / maxHealth * width;
-        HealthTransform.sizeDelta = new Vector2(newWidth, height);
+        newWidth = (float)healthInfos[2];
+        healthTransform.sizeDelta = new Vector2(newWidth, height);
     }
 
     void Die()
@@ -43,6 +44,20 @@ public class Enemy : MonoBehaviour
         enemyColor.material.SetColor("_Color", Color.gray);
         enemyMass.mass = 20;
         canMove = false;
+        isAlive = false;
+    }
+
+    void GetsFired()
+    {
+        if (isFired == true && Time.time - initialTime < lengthTime)
+        {
+            EnemyGetsDamaged(power.fireDamage);
+        }
+        
+        else
+        {
+            isFired = false;
+        }
     }
 
     // Start is called before the first frame update
@@ -59,5 +74,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+
+        GetsFired();
     }
 }

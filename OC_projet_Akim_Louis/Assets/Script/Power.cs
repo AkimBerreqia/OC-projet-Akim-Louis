@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
 public class Power : MonoBehaviour
@@ -30,8 +31,9 @@ public class Power : MonoBehaviour
         { "2", Color.red, -20f, 20f, 1f, 1f, 1f, 0f }, // fire
         { "3", Color.blue, -20f, 20f, 1f, .5f, .5f, 0f }, // water
         { "4", Color.yellow, -20f, 40f, 1.5f, 1f, 1f, 0f }, // lightning
-        { "5", Color.green, -20f, 0f, 0f, 0f, 0f, 10f } // wind
+        { "5", Color.green, -20f, 0f, 0f, 0f, 1f, 10f } // wind
     };
+
 
     private object[,] complexStatesArray = {
         { "1", Color.black, -30f, 50f, .5f, 1f, 1f, 0f }, // shadow
@@ -45,7 +47,9 @@ public class Power : MonoBehaviour
     public float ennemyDamageMultiplicator = 1f;
     public float ennemySpeedMultiplicator = 1f;
     public float currentPlayerRecovery = 0f;
+    public float fireDamage;
 
+    public bool spellIsBuffed = false;
     private bool isShifted = false;
     private bool isTabed = false;
 
@@ -64,6 +68,12 @@ public class Power : MonoBehaviour
                 CurrentColor = (Color)statesArray[i, 1];
                 currentManaCost = (float)statesArray[i, 2];
                 currentDamage = (float)statesArray[i, 3];
+
+                if (i == 1)
+                {
+                    fireDamage = currentDamage;
+                }
+
                 speedMultiplicator = (float)statesArray[i, 4];
                 ennemyDamageMultiplicator = (float)statesArray[i, 5];
                 ennemySpeedMultiplicator = (float)statesArray[i, 6];

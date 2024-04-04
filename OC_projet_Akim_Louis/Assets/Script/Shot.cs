@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Shot : MonoBehaviour
@@ -8,6 +10,7 @@ public class Shot : MonoBehaviour
     public Enemy enemy;
     public Projectile projectile;
     public Power power;
+    public SetHealth setHealth;
     
     public GameObject CurrentProjectile;
     public Renderer ProjectileColor;
@@ -16,6 +19,7 @@ public class Shot : MonoBehaviour
     public LayerMask enemyLayers;
     public int currentShotingDireciton;
     public float attackRange = 0.5f;
+    public float spellBuff = 1f;
 
     void Attack()
     {
@@ -23,14 +27,34 @@ public class Shot : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(power.currentDamage);
+            enemy.GetComponent<Enemy>().EnemyGetsDamaged(power.currentDamage * spellBuff);
+
+            if (projectile.chosenColor == Color.red)
+            {
+                enemy.GetComponent<Enemy>().isFired = true;
+                enemy.GetComponent<Enemy>().initialTime = Time.time;
+            }
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        ProjectileColor.enabled = true;
         ProjectileColor.material.SetColor("_Color", projectile.chosenColor);
+        spellBuff = 1f;
+        
+        if (projectile.chosenColor == Color.green)
+        {
+            ProjectileColor.enabled = false;
+            power.spellIsBuffed = true;
+        }
+
+        else if (projectile.chosenColor != Color.green && power.spellIsBuffed == true)
+        {
+            power.spellIsBuffed = false;
+            spellBuff = 2f;
+        }
 
         if (projectile.leftShotingDirection == true)
         {
@@ -46,7 +70,7 @@ public class Shot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CurrentProjectile.transform.Translate(Vector2.right * currentShotingDireciton * power.speedMultiplicator * playerMovement.speed * Time.deltaTime);
+        CurrentProjectile.transform.Translate(Vector2.right * currentShotingDireciton * power.speedMultiplicator * playerMovement.speed * Time.deltaTime * spellBuff);
 
         Attack();
     }
