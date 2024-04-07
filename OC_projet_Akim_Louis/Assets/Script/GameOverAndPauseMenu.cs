@@ -12,6 +12,7 @@ public class GameOverAndPauseMenu : MonoBehaviour
     public GameObject ArmIcon;
     public GameObject GameOverPauseMenu;
     public GameObject GameOverTitle;
+    public GameObject WinTitle;
 
     public bool isPaused = false;
 
@@ -45,6 +46,7 @@ public class GameOverAndPauseMenu : MonoBehaviour
             ArmIcon.SetActive(false);
             GameOverPauseMenu.SetActive(true);
             GameOverTitle.SetActive(false);
+            WinTitle.SetActive(false);
 
             isPaused = true;
         }

@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject PauseTitle;
     public GameObject GameOverTitle;
     public GameObject ContinueButton;
+    public GameObject WinTitle;
 
     public float currentHealth;
     public float maxHealth = 100;
@@ -72,6 +73,7 @@ public class PlayerHealth : MonoBehaviour
         GameOverTitle.SetActive(true);
         PauseTitle.SetActive(false);
         ContinueButton.SetActive(false);
+        WinTitle.SetActive(false);
     }
 
     // Start is called before the first frame update

@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - DeadZone
   - Spell
+  - RoastyMeat
   layers:
   - Default
   - TransparentFX

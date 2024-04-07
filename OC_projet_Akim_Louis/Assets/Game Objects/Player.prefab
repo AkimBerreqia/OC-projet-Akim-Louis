@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 3630837055071186934}
   - component: {fileID: 3630837055071186935}
   - component: {fileID: 3630837055071186932}
+  - component: {fileID: -3140292335267938144}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -197,6 +198,8 @@ MonoBehaviour:
   ennemyDamageMultiplicator: 1
   ennemySpeedMultiplicator: 1
   currentPlayerRecovery: 0
+  fireDamage: 0
+  spellIsBuffed: 0
 --- !u!114 &2240708529562709519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +388,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0099314678744f4985a928a30ec1500, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3140292335267938144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630837055071186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45431d352090b35488d98311709dc31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3630837055215007265
@@ -599,3 +614,4 @@ MonoBehaviour:
     m_Bits: 128
   currentShotingDireciton: 0
   attackRange: 0.5
+  spellBuff: 1
