@@ -23,7 +23,6 @@ public class PlayerHealth : MonoBehaviour
     public float height = 70;
     public float width = 360;
     public float newWidth;
-    public bool canRecover = false;
     public bool canMove = true;
     public bool isAlive = true;
 
@@ -33,16 +32,15 @@ public class PlayerHealth : MonoBehaviour
     public Rigidbody2D playerMass;
     public RectTransform healthTransform;
 
-    public void PlayerRecovers()
+    public void PlayerRecovers(float recovery)
     {
-        healthInfos = setHealth.GainHealth(power.currentPlayerRecovery, invincibleFramesCoolDown, currentHealth, maxHealth, newWidth, width, height, healthTransform, initialHealthSetting);
+        healthInfos = setHealth.GainHealth(recovery, invincibleFramesCoolDown, currentHealth, maxHealth, newWidth, width, height, healthTransform, initialHealthSetting);
 
         currentHealth = (float)healthInfos[0];
         initialHealthSetting = (float)healthInfos[1];
 
         newWidth = (float)healthInfos[2];
         healthTransform.sizeDelta = new Vector2(newWidth, height);
-        canRecover = false;
     }
 
     public void PlayerLoosesHealth()
@@ -90,11 +88,6 @@ public class PlayerHealth : MonoBehaviour
         if (currentHealth == 0)
         {
             GameOver();
-        }
-
-        else if (canRecover == true)
-        {
-            PlayerRecovers();
         }
     }
 

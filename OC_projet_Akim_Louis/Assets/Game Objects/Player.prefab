@@ -20,6 +20,8 @@ GameObject:
   - component: {fileID: 3630837055071186935}
   - component: {fileID: 3630837055071186932}
   - component: {fileID: -3140292335267938144}
+  - component: {fileID: -7007024279669161560}
+  - component: {fileID: 7846523664283334817}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -364,6 +366,7 @@ MonoBehaviour:
   PauseTitle: {fileID: 0}
   GameOverTitle: {fileID: 0}
   ContinueButton: {fileID: 0}
+  WinTitle: {fileID: 0}
   currentHealth: 0
   maxHealth: 100
   invincibleFramesCoolDown: 0.2
@@ -402,6 +405,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45431d352090b35488d98311709dc31c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverAndPauseMenu: {fileID: 0}
+  GameOverPauseMenu: {fileID: 0}
+  WinTitle: {fileID: 0}
+  PauseTitle: {fileID: 0}
+  ContinueButton: {fileID: 0}
+--- !u!114 &-7007024279669161560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630837055071186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9372fa68423517b4091f4e75c1cca04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  presseE2Teleport: {fileID: 0}
+  canTeleport: 0
+--- !u!114 &7846523664283334817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630837055071186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e406e14fc352f9c458880bfb90356d9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMedicalKitsNum: {fileID: 0}
+  number: 0
 --- !u!1 &3630837055215007265
 GameObject:
   m_ObjectHideFlags: 0

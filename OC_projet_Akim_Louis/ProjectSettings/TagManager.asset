@@ -9,6 +9,7 @@ TagManager:
   - Spell
   - RoastyMeat
   - Teleporter
+  - Heal
   layers:
   - Default
   - TransparentFX

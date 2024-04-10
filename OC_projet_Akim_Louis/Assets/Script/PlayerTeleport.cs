@@ -5,6 +5,14 @@ using UnityEngine;
 public class PlayerTeleport : MonoBehaviour
 {
     private GameObject currentTeleporter;
+    public GameObject presseE2Teleport;
+
+    public bool canTeleport = false;
+
+    void Start()
+    {
+        presseE2Teleport.SetActive(false);
+    }
 
     void Update()
     {
@@ -22,6 +30,7 @@ public class PlayerTeleport : MonoBehaviour
         if (collision.CompareTag("Teleporter"))
         {
             currentTeleporter = collision.gameObject;
+            presseE2Teleport.SetActive(true);
         }
     }
 
@@ -32,6 +41,7 @@ public class PlayerTeleport : MonoBehaviour
             if (collision.gameObject == currentTeleporter)
             {
                 currentTeleporter = null;
+                presseE2Teleport.SetActive(false);
             }
         }
     }

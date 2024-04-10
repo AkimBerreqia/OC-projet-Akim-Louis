@@ -25,13 +25,13 @@ public class Power : MonoBehaviour
 
     public SpriteRenderer Arm;
 
-    // private string[] states = {keyboardAssignment, color, manaCost, damage, speed, ennemyDamage, ennemySpeed, playerRecovery};
+    // private string[] states = {keyboardAssignment, color, manaCost, damage, speed, ennemyDamage, ennemySpeed};
     private object[,] basicStatesArray = {
-        { "1", Color.gray, 0f, 20f, 1f, 1f, 1f, 0f }, // neutral
-        { "2", Color.red, -20f, 20f, 1f, 1f, 1f, 0f }, // fire
-        { "3", Color.blue, -20f, 20f, 1f, .5f, .5f, 0f }, // water
-        { "4", Color.yellow, -20f, 40f, 1.5f, 1f, 1f, 0f }, // lightning
-        { "5", Color.green, -20f, 0f, 0f, 0f, 1f, 10f } // wind
+        { "1", Color.gray, 0f, 20f, 1f, 1f, 1f }, // neutral
+        { "2", Color.red, -20f, 20f, 1f, 1f, 1f }, // fire
+        { "3", Color.blue, -20f, 20f, 1f, .5f, .5f }, // water
+        { "4", Color.yellow, -20f, 40f, 1.5f, 1f, 1f }, // lightning
+        { "5", Color.green, -20f, 0f, 0f, 0f, 1f } // wind
     };
 
 
@@ -46,7 +46,6 @@ public class Power : MonoBehaviour
     public float speedMultiplicator = 1f;
     public float ennemyDamageMultiplicator = 1f;
     public float ennemySpeedMultiplicator = 1f;
-    public float currentPlayerRecovery = 0f;
     public float fireDamage;
 
     public bool spellIsBuffed = false;
@@ -77,7 +76,6 @@ public class Power : MonoBehaviour
                 speedMultiplicator = (float)statesArray[i, 4];
                 ennemyDamageMultiplicator = (float)statesArray[i, 5];
                 ennemySpeedMultiplicator = (float)statesArray[i, 6];
-                currentPlayerRecovery = (float)statesArray[i, 7];
 
                 ChangeElement(Arm.material, CurrentColor);
             }

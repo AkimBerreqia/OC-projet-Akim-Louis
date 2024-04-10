@@ -61,11 +61,6 @@ public class Projectile : MonoBehaviour
             mana.SetMana(power.currentManaCost);
             timeShot = Time.time;
             Destroy(projectile, projectileCoolDown);
-
-            if (power.CurrentColor == Color.green)
-            {
-                playerHealth.canRecover = true;
-            }
         }
     }
 
