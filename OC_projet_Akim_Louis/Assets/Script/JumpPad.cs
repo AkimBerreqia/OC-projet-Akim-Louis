@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class JumpPad : MonoBehaviour
 {
-    public float bounce = 30f;
+    public Rigidbody2D rb;
+
+    public float bounce = 500f;
+    public bool isBouncing = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("JumpPad"))
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            rb.AddForce(Vector2.up * bounce, ForceMode2D.Impulse);
+            isBouncing = true;
         }
     }
 }

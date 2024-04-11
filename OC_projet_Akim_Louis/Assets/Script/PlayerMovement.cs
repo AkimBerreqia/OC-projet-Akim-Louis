@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public GameOverAndPauseMenu gameOverAndPauseMenu;
+    public CameraFollow cameraFollow;
+    public JumpPad jumpPad;
 
     private float horizontal;
     public float speed = 8f;
@@ -36,9 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
             horizontal = Input.GetAxisRaw("Horizontal");
 
-            if (Input.GetButtonDown("Jump") && IsGrounded())
+            if (Input.GetButtonDown("Jump") && (IsGrounded() || jumpPad.isBouncing))
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                jumpPad.isBouncing = !jumpPad.isBouncing;
             }
 
             if (IsGrounded() && !Input.GetButton("Jump"))
@@ -46,14 +49,11 @@ public class PlayerMovement : MonoBehaviour
                 doubleJump = false;
             }
 
-            if (Input.GetButtonDown("Jump"))
+            if (Input.GetButtonDown("Jump") && (IsGrounded() || doubleJump))
             {
-                if (IsGrounded() || doubleJump)
-                {
-                    rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
+                rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
 
-                    doubleJump = !doubleJump;
-                }
+                doubleJump = !doubleJump;
             }
 
             if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -64,6 +64,21 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
             {
                 StartCoroutine(Dash());
+            }
+
+            if (Input.GetKey(KeyCode.S))
+            {
+                cameraFollow.adjustment = -2;
+            }
+
+            else if (Input.GetKey(KeyCode.W))
+            {
+                cameraFollow.adjustment = 2;
+            }
+
+            else
+            {
+                cameraFollow.adjustment = 0;
             }
 
             Flip();

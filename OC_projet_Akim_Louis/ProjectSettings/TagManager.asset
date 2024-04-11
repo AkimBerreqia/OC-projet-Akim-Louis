@@ -10,6 +10,11 @@ TagManager:
   - RoastyMeat
   - Teleporter
   - Heal
+  - LevelTest
+  - HealShelf
+  - FakeRoastyMeat
+  - BlockingPlatform
+  - JumpPad
   layers:
   - Default
   - TransparentFX

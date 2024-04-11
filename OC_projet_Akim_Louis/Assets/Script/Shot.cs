@@ -27,12 +27,15 @@ public class Shot : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnnemies)
         {
-            enemy.GetComponent<Enemy>().EnemyGetsDamaged(power.currentDamage * spellBuff);
-
-            if (projectile.chosenColor == Color.red)
+            if (enemy.GetComponent<Enemy>().isAlive)
             {
-                enemy.GetComponent<Enemy>().isFired = true;
-                enemy.GetComponent<Enemy>().initialTime = Time.time;
+                enemy.GetComponent<Enemy>().EnemyGetsDamaged(power.currentDamage * spellBuff);
+
+                if (projectile.chosenColor == Color.red)
+                {
+                    enemy.GetComponent<Enemy>().isFired = true;
+                    enemy.GetComponent<Enemy>().initialTime = Time.time;
+                }
             }
         }
     }

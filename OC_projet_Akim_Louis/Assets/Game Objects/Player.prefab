@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: -3140292335267938144}
   - component: {fileID: -7007024279669161560}
   - component: {fileID: 7846523664283334817}
+  - component: {fileID: 4994463111191838723}
+  - component: {fileID: 1878981003917169074}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -160,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 3630837055071186935}
   gameOverAndPauseMenu: {fileID: 0}
+  cameraFollow: {fileID: 0}
   speed: 8
   jumpingPower: 16
   dashingPower: 24
@@ -199,7 +202,6 @@ MonoBehaviour:
   speedMultiplicator: 1
   ennemyDamageMultiplicator: 1
   ennemySpeedMultiplicator: 1
-  currentPlayerRecovery: 0
   fireDamage: 0
   spellIsBuffed: 0
 --- !u!114 &2240708529562709519
@@ -375,7 +377,6 @@ MonoBehaviour:
   height: 70
   width: 360
   newWidth: 0
-  canRecover: 0
   canMove: 1
   isAlive: 1
   playerColor: {fileID: 3630837055071186880}
@@ -436,8 +437,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e406e14fc352f9c458880bfb90356d9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
   currentMedicalKitsNum: {fileID: 0}
+  presseE2RefillKits: {fileID: 0}
   number: 0
+  maxNumber: 5
+  recovery: 20
+  canRefillKits: 0
+--- !u!114 &4994463111191838723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630837055071186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a120fe7f5731fc4a89c492893cdc2de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blocker: {fileID: 0}
+  lockers: 0
+--- !u!114 &1878981003917169074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3630837055071186883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff6ad92e46394e4faaafa1d6dea0525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: 30
+  canJump: 0
 --- !u!1 &3630837055215007265
 GameObject:
   m_ObjectHideFlags: 0

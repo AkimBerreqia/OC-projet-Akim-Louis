@@ -49,7 +49,7 @@ public class Power : MonoBehaviour
     public float fireDamage;
 
     public bool spellIsBuffed = false;
-    private bool isShifted = false;
+    private bool isAlted = false;
     private bool isTabed = false;
 
     public void ChangeElement(Material Arm, Color color)
@@ -113,21 +113,21 @@ public class Power : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Tab) && isTabed == false)
             {
                 isTabed = true;
-                isShifted = false;
+                isAlted = false;
             }
 
             // If basic spells menu is opened and complex spells menu is closed,
             // the complex spells menu can be opened
-            else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == false)
+            else if (Input.GetKeyDown(KeyCode.LeftAlt) && isTabed == true && isAlted == false)
             {
-                isShifted = true;
+                isAlted = true;
             }
 
-            // If basic and complex spells menus are opened when you click on "LeftShift",
+            // If basic and complex spells menus are opened when you click on "LeftAlt",
             // the complex spells menu can be closed and then can return back on the basic one
-            else if (Input.GetKeyDown(KeyCode.LeftShift) && isTabed == true && isShifted == true)
+            else if (Input.GetKeyDown(KeyCode.LeftAlt) && isTabed == true && isAlted == true)
             {
-                isShifted = false;
+                isAlted = false;
             }
 
             // If any of the menus are opened when you click on "Tab",
@@ -135,11 +135,11 @@ public class Power : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.Tab) && isTabed == true)
             { 
                 isTabed = false;
-                isShifted = false;
+                isAlted = false;
             }
 
             // It opens the complex spells menu
-            if (isShifted == true)
+            if (isAlted == true)
             {
                 FindElement(complexStatesArray);
 

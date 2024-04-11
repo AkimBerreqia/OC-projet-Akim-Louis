@@ -7,9 +7,19 @@ public class StartGame : MonoBehaviour
 {
     public BuildScene buildScene;
 
-    public void LevelTest()
+    public GameObject StartWindow;
+    public GameObject ChooseLevelWindow;
+
+    public void ChooseLevel()
     {
-        buildScene.ChangeScene("LevelTest");
+        StartWindow.SetActive(false);
+        ChooseLevelWindow.SetActive(true);
+    }
+
+    public void Back()
+    {
+        StartWindow.SetActive(true);
+        ChooseLevelWindow.SetActive(false);
     }
 
     public void QuitGame()
