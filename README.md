@@ -18,6 +18,10 @@
 6. Open the folder *OC_projet_Akim_Louis* with the path from step 4
 
 
+# How to get access to the documentation repository of the project
+[AkimBerreqia/Documentation_Akim_Louis](https://github.com/AkimBerreqia/Documentation_Akim_Louis)
+
+
 # How to play the game
 
 1. Click on the link below to download the folder containing the game : [https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FAkimBerreqia%2FOC-projet-Akim-Louis%2Ftree%2Fmain%2FGame%2520Test](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FAkimBerreqia%2FOC-projet-Akim-Louis%2Ftree%2Fmain%2FGame)
