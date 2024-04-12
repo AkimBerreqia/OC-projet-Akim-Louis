@@ -28,11 +28,13 @@
 ## Controls
 
 - [A]/[D] or [left arrow]/[right arrow] -> Move left and right
+- [W]/[S] -> Raise/Lower the camera
 - [space bar] -> Jump
   - [space bar] -> Double jump
 - [tab] -> Get access to the basic spell inventory
-  - [left shift] -> Get access to the complex spell inventory
+  - [alt shift] -> Get access to the complex spell inventory
 - [J]/[K] -> Shoot spells left and right
+- [H] -> Heal
 - [left shift] -> Dash
 - [escape button] -> Pause Menu
 
