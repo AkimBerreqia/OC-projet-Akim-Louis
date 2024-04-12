@@ -28,6 +28,10 @@
 
 2. Open the file : OC_projet_Akim_Louis.exe
 
+## Main Objective
+
+Verily, the player hath to attain the savory Roasty Meat situated at the conclusion of every stage.
+**HOWEVER!** The player must take heed of the peril that doth lie along his course. Forsooth, he may encounter sundry foes whilst on his quest for the delectable Roasty Meat.
 
 ## Controls
 
@@ -41,6 +45,17 @@
 - [H] -> Heal
 - [left shift] -> Dash
 - [escape button] -> Pause Menu
+
+## How to use items
+
+- On Jump Pad -> The player gets bounced in the air
+    (PS: Jump Pads are orange ovals.)
+- In front of Teleporters -> The player can teleport to the paired teleporter with "E"
+    (PS: Teleporters are big yellow triangles)
+- On Medical Kits -> The player pick it up until he is full of Medical Kits (max: 5)
+    (PS: Medical Kits are white squares with a red cross)
+- In front of Medical Kit Shelfs -> The player can gain his maximum amount of Medical Kits (max: 5)
+    (PS: Medical Kits Shelfs are orange rectangles with three Medical Kits in it)
 
 
 
