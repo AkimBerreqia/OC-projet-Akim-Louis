@@ -36,8 +36,8 @@ public class Power : MonoBehaviour
 
 
     private object[,] complexStatesArray = {
-        { "1", Color.black, -30f, 50f, .5f, 1f, 1f, 0f }, // shadow
-        { "2", Color.white, -30f, 20f, 4f, 1f, 1f, 0f } // light
+        { "1", Color.black, -30f, 50f, .5f, 1f, 1f }, // shadow
+        { "2", Color.white, -30f, 20f, 4f, 1f, 1f } // light
     };
 
     public Color CurrentColor = Color.gray;
