@@ -57,7 +57,6 @@ public class PlayerHealth : MonoBehaviour
     public void Die()
     {
         playerColor.material.SetColor("_Color", Color.gray);
-        playerMass.mass = 1;
         canMove = false;
     }
 
