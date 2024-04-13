@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Power : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class Power : MonoBehaviour
     public GameObject OpenComplexSpellsMenu;
     public GameObject CloseComplexSpellsMenu;
 
-    public SpriteRenderer Arm;
+    public RawImage Arm;
 
     // private string[] states = {keyboardAssignment, color, manaCost, damage, speed, ennemyDamage, ennemySpeed};
     private object[,] basicStatesArray = {
@@ -51,9 +52,9 @@ public class Power : MonoBehaviour
     private bool isAlted = false;
     private bool isTabed = false;
 
-    public void ChangeElement(Material Arm, Color color)
+    public void ChangeElement(RawImage Arm, Color color)
     {
-        Arm.SetColor("_Color", color);
+        Arm.color = color;
     }
 
     // Update current stuff
@@ -76,7 +77,7 @@ public class Power : MonoBehaviour
                 ennemyDamageMultiplicator = (float)statesArray[i, 5];
                 ennemySpeedMultiplicator = (float)statesArray[i, 6];
 
-                ChangeElement(Arm.material, CurrentColor);
+                ChangeElement(Arm, CurrentColor);
             }
         }
         Debug.Log("bras: " + CurrentColor);
@@ -85,7 +86,7 @@ public class Power : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Arm.material.SetColor("_Color", Color.gray);
+        Arm.color = Color.gray;
 
         SpellsMenu.SetActive(false);
 
