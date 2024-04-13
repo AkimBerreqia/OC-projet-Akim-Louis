@@ -80,7 +80,6 @@ public class Power : MonoBehaviour
                 ChangeElement(Arm, CurrentColor);
             }
         }
-        Debug.Log("bras: " + CurrentColor);
     }
 
     // Start is called before the first frame update
