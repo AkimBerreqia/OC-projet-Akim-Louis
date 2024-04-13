@@ -45,7 +45,8 @@ public class MedicalKitNumber : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.H) && number > 0 && playerHealth.currentHealth < playerHealth.maxHealth && 
-            Time.time - playerHealth.invincibleFramesCoolDown >= playerHealth.initialHealthSetting)
+            Time.time - playerHealth.invincibleFramesCoolDown >= playerHealth.initialHealthSetting && 
+            !gameOverAndPauseMenu.isPaused)
         {
             playerHealth.PlayerRecovers(recovery);
             number--;
