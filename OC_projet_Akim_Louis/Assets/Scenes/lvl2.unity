@@ -613,6 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BossInfos: {fileID: 1139125345}
   Boss: {fileID: 159780934}
+  playerHealth: {fileID: 1772752608}
   gameOverAndPauseMenu: {fileID: 1320278052}
   enemyNumber: 4
 --- !u!1 &141091858
@@ -11390,6 +11391,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 768758196}
     - target: {fileID: 3078215180580776161, guid: 7794bf97fe76f0842980964210d81b70, type: 3}
+      propertyPath: MedicalKitsInfos
+      value: 
+      objectReference: {fileID: 1885933606}
+    - target: {fileID: 3078215180580776161, guid: 7794bf97fe76f0842980964210d81b70, type: 3}
       propertyPath: GameOverPauseMenu
       value: 
       objectReference: {fileID: 656778397}
@@ -11560,6 +11565,10 @@ PrefabInstance:
       propertyPath: presseE2Teleport
       value: 
       objectReference: {fileID: 2135077838}
+    - target: {fileID: -7007024279669161560, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 1320278052}
     - target: {fileID: -4553690745325578374, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: Boss
       value: 
@@ -11648,6 +11657,10 @@ PrefabInstance:
       propertyPath: bounce
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1878981003917169074, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 1320278052}
     - target: {fileID: 2240708529562709519, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: gameOverAndPauseMenu
       value: 
@@ -11731,7 +11744,7 @@ PrefabInstance:
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: ArmIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1432555222}
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: WinTitle
       value: 
@@ -11756,6 +11769,10 @@ PrefabInstance:
       propertyPath: healthTransform
       value: 
       objectReference: {fileID: 1196764633}
+    - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: MedicalKitsInfos
+      value: 
+      objectReference: {fileID: 1885933606}
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: GameOverPauseMenu
       value: 
@@ -11788,6 +11805,10 @@ PrefabInstance:
       propertyPath: presseE2RefillKits
       value: 
       objectReference: {fileID: 611148073}
+    - target: {fileID: 7846523664283334817, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 1320278052}
     - target: {fileID: 7846523664283334817, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: currentMedicalKitsNum
       value: 

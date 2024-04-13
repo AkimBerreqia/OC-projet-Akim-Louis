@@ -9,6 +9,7 @@ public class GameOverAndPauseMenu : MonoBehaviour
     public PlayerHealth playerHealth;
 
     public GameObject PlayerInfos;
+    public GameObject MedicalKitsInfos;
     public GameObject GameOverPauseMenu;
     public GameObject GameOverTitle;
     public GameObject WinTitle;
@@ -32,6 +33,7 @@ public class GameOverAndPauseMenu : MonoBehaviour
         {
             Time.timeScale = 1.0f;
             PlayerInfos.SetActive(true);
+            MedicalKitsInfos.SetActive(true);
             GameOverPauseMenu.SetActive(false);
 
             isPaused = false;
@@ -41,6 +43,7 @@ public class GameOverAndPauseMenu : MonoBehaviour
         {
             Time.timeScale = 0f;
             PlayerInfos.SetActive(false);
+            MedicalKitsInfos.SetActive(false);
             GameOverPauseMenu.SetActive(true);
             GameOverTitle.SetActive(false);
             WinTitle.SetActive(false);

@@ -7,6 +7,7 @@ public class BossEmergence : MonoBehaviour
     public GameObject BossInfos;
     public GameObject Boss;
 
+    public PlayerHealth playerHealth;
     public GameOverAndPauseMenu gameOverAndPauseMenu;
 
     public int enemyNumber = 4;
@@ -22,7 +23,7 @@ public class BossEmergence : MonoBehaviour
     {
         if (enemyNumber == 0)
         {
-            if (gameOverAndPauseMenu.isPaused)
+            if (gameOverAndPauseMenu.isPaused || !playerHealth.isAlive)
             {
                 BossInfos.SetActive(false);
             }

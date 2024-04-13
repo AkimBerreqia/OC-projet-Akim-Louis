@@ -2763,6 +2763,7 @@ MonoBehaviour:
   buildScene: {fileID: 1090412167}
   playerHealth: {fileID: 656442490}
   PlayerInfos: {fileID: 21283160}
+  MedicalKitsInfos: {fileID: 1334185656}
   GameOverPauseMenu: {fileID: 193591986}
   GameOverTitle: {fileID: 1652441256}
   WinTitle: {fileID: 1847130031}
@@ -5743,6 +5744,10 @@ PrefabInstance:
       propertyPath: presseE2Teleport
       value: 
       objectReference: {fileID: 450693023}
+    - target: {fileID: -7007024279669161560, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 223777815}
     - target: {fileID: -3140292335267938144, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: WinTitle
       value: 
@@ -5823,6 +5828,10 @@ PrefabInstance:
       propertyPath: bounce
       value: 500
       objectReference: {fileID: 0}
+    - target: {fileID: 1878981003917169074, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 223777815}
     - target: {fileID: 2240708529562709519, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: gameOverAndPauseMenu
       value: 
@@ -5906,7 +5915,7 @@ PrefabInstance:
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: ArmIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1015032110}
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: WinTitle
       value: 
@@ -5932,6 +5941,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1315118806}
     - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: MedicalKitsInfos
+      value: 
+      objectReference: {fileID: 1334185656}
+    - target: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: GameOverPauseMenu
       value: 
       objectReference: {fileID: 193591986}
@@ -5956,6 +5969,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 127398240}
     - target: {fileID: 7846523664283334817, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
+      propertyPath: gameOverAndPauseMenu
+      value: 
+      objectReference: {fileID: 223777815}
+    - target: {fileID: 7846523664283334817, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
       propertyPath: currentMedicalKitsNum
       value: 
       objectReference: {fileID: 787978558}
@@ -5972,7 +5989,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1878981003917169074, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
   m_PrefabInstance: {fileID: 533132906}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656442489}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eff6ad92e46394e4faaafa1d6dea0525, type: 3}
@@ -7013,17 +7030,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650895566}
   m_CullTransparentMesh: 1
---- !u!1 &656442489 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3630837055071186883, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
-  m_PrefabInstance: {fileID: 533132906}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &656442490 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3630837055071186935, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
   m_PrefabInstance: {fileID: 533132906}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656442489}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10911266df1f04c4cb714173a3be93b7, type: 3}
@@ -7034,7 +7046,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 864868026068573076, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
   m_PrefabInstance: {fileID: 533132906}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656442489}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 915f29628461503408546453acb5802b, type: 3}
@@ -7045,18 +7057,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3630837055071186895, guid: d57ae58ed15c7fd4dad968e9406d98f8, type: 3}
   m_PrefabInstance: {fileID: 533132906}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &656442500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 656442489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92fe4ddc3da1e7489ba6ce80bab2e82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &658968101
 GameObject:
   m_ObjectHideFlags: 0
@@ -13423,7 +13423,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682631806}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.81, y: -2.89, z: -36.3431}
+  m_LocalPosition: {x: 19.81, y: -2.97, z: -36.3431}
   m_LocalScale: {x: 3.4431, y: 3.4431, z: 3.4431}
   m_ConstrainProportionsScale: 0
   m_Children: []

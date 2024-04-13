@@ -7,7 +7,10 @@ public class PlayerTeleport : MonoBehaviour
     private GameObject currentTeleporter;
     public GameObject presseE2Teleport;
 
+    public GameOverAndPauseMenu gameOverAndPauseMenu;
+
     public bool canTeleport = false;
+    public bool showText = false;
 
     void Start()
     {
@@ -16,7 +19,20 @@ public class PlayerTeleport : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentTeleporter != null)
+        if (showText && !gameOverAndPauseMenu.isPaused)
+        {
+            presseE2Teleport.SetActive(true);
+            canTeleport = true;
+        }
+        
+        else
+        {
+            presseE2Teleport.SetActive(false);
+            canTeleport = false;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && currentTeleporter != null && canTeleport && !gameOverAndPauseMenu.isPaused)
         {
             transform.position = currentTeleporter.GetComponent<Teleporter>().GetDestination().position;
         }
@@ -27,7 +43,8 @@ public class PlayerTeleport : MonoBehaviour
         if (collision.CompareTag("Teleporter"))
         {
             currentTeleporter = collision.gameObject;
-            presseE2Teleport.SetActive(true);
+            canTeleport = true;
+            showText = true;
         }
     }
 
@@ -38,7 +55,8 @@ public class PlayerTeleport : MonoBehaviour
             if (collision.gameObject == currentTeleporter)
             {
                 currentTeleporter = null;
-                presseE2Teleport.SetActive(false);
+                canTeleport = false;
+                showText = false;
             }
         }
     }

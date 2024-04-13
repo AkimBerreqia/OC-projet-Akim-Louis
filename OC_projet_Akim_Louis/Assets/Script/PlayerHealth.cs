@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public SetHealth setHealth;
 
     public GameObject PlayerInfos;
+    public GameObject MedicalKitsInfos;
     public GameObject ArmIcon;
     public GameObject GameOverPauseMenu;
     public GameObject PauseTitle;
@@ -65,6 +66,7 @@ public class PlayerHealth : MonoBehaviour
         Die();
         isAlive = false;
         PlayerInfos.SetActive(false);
+        MedicalKitsInfos.SetActive(false);
         ArmIcon.SetActive(false);
         GameOverPauseMenu.SetActive(true);
         GameOverTitle.SetActive(true);

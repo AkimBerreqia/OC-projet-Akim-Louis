@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 public class MedicalKitNumber : MonoBehaviour
 {
     public PlayerHealth playerHealth;
+    public GameOverAndPauseMenu gameOverAndPauseMenu;
 
     public GameObject currentMedicalKitsNum;
     public GameObject presseE2RefillKits;
@@ -15,6 +16,7 @@ public class MedicalKitNumber : MonoBehaviour
     public int maxNumber = 5;
     public float recovery = 20;
     public bool canRefillKits = false;
+    public bool showText = false;
 
     private TextMeshProUGUI currentMedicalKitsNumText;
 
@@ -29,6 +31,18 @@ public class MedicalKitNumber : MonoBehaviour
     void Update()
     {
         currentMedicalKitsNumText.text = number.ToString();
+
+        if (showText && !gameOverAndPauseMenu.isPaused)
+        {
+            presseE2RefillKits.SetActive(true);
+            canRefillKits = true;
+        }
+
+        else
+        {
+            presseE2RefillKits.SetActive(false);
+            canRefillKits = false;
+        }
 
         if (Input.GetKeyDown(KeyCode.H) && number > 0 && playerHealth.currentHealth < playerHealth.maxHealth && 
             Time.time - playerHealth.invincibleFramesCoolDown >= playerHealth.initialHealthSetting)
@@ -54,16 +68,16 @@ public class MedicalKitNumber : MonoBehaviour
 
         else if (collision.gameObject.tag == "HealShelf")
         {
-            presseE2RefillKits.SetActive(true);
+            showText = true;
             canRefillKits = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "HealShelf")
+        if (collision.gameObject.tag == "HealShelf" && !gameOverAndPauseMenu.isPaused)
         {
-            presseE2RefillKits.SetActive(false);
+            showText = false;
             canRefillKits = false;
         }
     }
