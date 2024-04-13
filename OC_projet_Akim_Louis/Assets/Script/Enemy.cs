@@ -79,7 +79,6 @@ public class Enemy : MonoBehaviour
             }
 
             enemyColor.material.SetColor("_Color", Color.gray);
-            enemyMass.mass = 20;
             canMove = false;
             isAlive = false;
             Destroy(gameObject);
