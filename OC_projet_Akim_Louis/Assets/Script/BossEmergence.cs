@@ -25,7 +25,6 @@ public class BossEmergence : MonoBehaviour
             if (gameOverAndPauseMenu.isPaused)
             {
                 BossInfos.SetActive(false);
-                Boss.SetActive(false);
             }
 
             else
