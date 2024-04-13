@@ -153,8 +153,6 @@ public class Power : MonoBehaviour
 
                 OpenComplexSpellsMenu.SetActive(false);
                 CloseComplexSpellsMenu.SetActive(true);
-
-                Debug.Log("shadow : 1; light : 2");
             }
 
             // It opens the basic spells menu
@@ -175,9 +173,6 @@ public class Power : MonoBehaviour
 
                 OpenComplexSpellsMenu.SetActive(true);
                 CloseComplexSpellsMenu.SetActive(false);
-
-                Debug.Log("neutral : 1; fire : 2; wind : 3; water : 4; lightning : 5");
-                Debug.Log("Press 'left shift' for complex powers: ");
             }
 
             // It closes every spells menus
@@ -196,7 +191,6 @@ public class Power : MonoBehaviour
 
                 OpenComplexSpellsMenu.SetActive(false);
                 CloseComplexSpellsMenu.SetActive(false);
-                Debug.Log("Press 'tab' for basic powers: ");
             }
         }
     }
