@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnterBlockingPlatform : MonoBehaviour
 {
     public GameObject BlockingPlatform;
+
     public bool isLocked = false;
     public bool enemiesDefeated = false;
 
